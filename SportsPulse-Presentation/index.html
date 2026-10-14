@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SportsPulse: Project Review</title>
+<link rel="stylesheet" href="style.css"></head><body>
+<div id="st">
+<div class="hud" id="hl">SPORTSPULSE</div>
+<div class="hud" id="hr"><button class="btn" id="bd">LIVE DEMO [L]</button><span class="sb" id="clk">00' KICK-OFF</span></div>
+<div class="hud" id="nav"><button class="btn" id="pv">[←]</button><button class="btn" id="nx">[→]</button><span id="ct"></span></div>
+<div id="pr"></div>
+
+<section class="s on" data-m="00" data-l="KICK-OFF" id="s0">
+ <div class="mono vo" id="boot" style="position:absolute;left:90px;top:130px;font-size:21px;line-height:1.9"></div>
+ <div id="tm" style="opacity:0;transition:opacity 1s">
+  <div class="mono" style="position:absolute;left:0;right:0;top:80px;text-align:center;font-size:22px;letter-spacing:.3em" id="i-uni"></div>
+  <div class="mono vo" style="position:absolute;left:0;right:0;top:140px;text-align:center;font-size:104px;font-weight:700;letter-spacing:-.03em">SPORTSPULSE</div>
+  <div style="position:absolute;left:0;right:0;top:268px;text-align:center;font-size:26px">Sports Analytics &amp; Performance Platform · Pure Java</div>
+  <div style="position:absolute;left:90px;right:90px;top:360px" class="g2">
+   <div><div class="mono cy" style="font-size:13px;letter-spacing:.2em;margin-bottom:8px">TEAM MEMBERS</div><div class="mono" id="i-team" style="font-size:17px;line-height:1.8"></div></div>
+   <div class="mono" style="font-size:17px;line-height:1.8"><div class="d" style="font-size:13px;letter-spacing:.2em;margin-bottom:8px">FACULTY MENTOR</div><b class="vo" id="i-guide"></b><div id="i-meta" class="d" style="margin-top:12px"></div></div>
+  </div>
+ </div>
+</section>
+
+<section class="s" data-m="10" data-l="THE PROBLEM">
+ <div class="k">PROBLEM STATEMENT &amp; OBJECTIVE</div>
+ <h2>Sports data is big. Tools that explain it are black boxes.</h2>
+ <div class="g2" style="margin-top:14px">
+  <div class="rv" style="--dl:.2s"><p class="sub" style="font-size:20px;color:var(--w)">Coaches and analysts search messy match reports, pick lineups under budgets, and plan training slots by hand. Typos break searches and no tool shows <i>why</i> a result is optimal. Students rarely see algorithms solving a real problem.</p>
+  <div class="card"><b>Target users</b>Coaches, analysts and faculty who want sports answers and algorithm proof.</div></div>
+  <div class="col">
+   <div class="card rv" style="--dl:.5s"><b>Goal 1: Search and mine</b>Typo-proof search and phrase mining over match reports.</div><br>
+   <div class="card rv" style="--dl:.9s"><b>Goal 2: Plan and optimise</b>Best lineup, salary cap, training flow, selection conflicts.</div><br>
+   <div class="card rv" style="--dl:1.3s"><b>Goal 3: Prove it</b>26 algorithms, 202 tests, and a benchmark lab with CSV export.</div>
+  </div>
+ </div>
+</section>
+
+<section class="s" data-m="20" data-l="TECH STACK">
+ <div class="k">TECHNOLOGIES &amp; CONCEPTS USED</div>
+ <h2>Pure Java 17. Zero libraries.</h2>
+ <div class="g3" style="margin-top:18px">
+  <div class="card rv" style="--dl:.2s"><b>Development stack</b>Language: Java 17+<br>Platform: Console (TrueColor + ANSI fallback)<br>IDE: IntelliJ · Git · Ant build</div>
+  <div class="card rv" style="--dl:.5s"><b>Core Java concepts</b>Classes &amp; objects · enums (Role, AccountStatus) · interfaces · exception handling · File I/O · Fork/Join concurrency · custom data structures</div>
+  <div class="card rv" style="--dl:.8s"><b>Security tools</b>PBKDF2-HMAC-SHA256 · SecureRandom salts · constant-time compare · RBAC · Carter-Wegman hash table</div>
+ </div>
+ <div class="k" style="margin-top:26px">SIX ALGORITHM MODULES</div>
+ <div class="g3">
+  <div class="card rv" style="--dl:1.1s"><b>M1 Strings</b>KMP · Z · Rabin-Karp · Aho-Corasick</div>
+  <div class="card rv" style="--dl:1.2s"><b>M2 Suffix</b>Suffix Array · SA-IS · LCP · Tree · Automaton</div>
+  <div class="card rv" style="--dl:1.3s"><b>M3 Dynamic programming</b>Edit distance · Bitmask · Knapsack · Matrix chain</div>
+  <div class="card rv" style="--dl:1.4s"><b>M4 Network flow</b>Ford-Fulkerson · Edmonds-Karp · Dinic · Matching</div>
+  <div class="card rv" style="--dl:1.5s"><b>M5 NP-completeness</b>DPLL SAT · 3-SAT→Clique · Vertex cover</div>
+  <div class="card rv" style="--dl:1.6s"><b>M6 Randomized &amp; parallel</b>QuickSort · Reservoir · Blelloch · Miller-Rabin</div>
+ </div>
+</section>
+
+<section class="s" data-m="35" data-l="ARCHITECTURE">
+ <div class="k">SYSTEM ARCHITECTURE / DATA FLOW</div>
+ <h2>USER SEES SPORTS. ALGORITHMS WORK BEHIND.</h2>
+ <div class="fl" id="fl">
+  <div class="bx">User input<small>menu choice</small></div><span class="ar">▸</span>
+  <div class="bx">Service layer<small>auth · RBAC · session</small></div><span class="ar">▸</span>
+  <div class="bx">Business logic<small>6 DSA modules</small></div><span class="ar">▸</span>
+  <div class="bx">File I/O<small>data · CSV export</small></div><span class="ar">▸</span>
+  <div class="bx">Report<small>tables · charts</small></div>
+ </div>
+ <div class="g2">
+  <div class="t"><div class="tb"><i></i><i></i><i></i><span>USER session</span></div><pre>Search · Reports · Squad Planner
+Training Flow · Selection Advisor
+Live Match telemetry</pre></div>
+  <div class="t"><div class="tb"><i></i><i></i><i></i><span>ADMIN session</span></div><pre>Hash diagnostics · Audit log
+Self-test 202/202 · Complexity lab
+Solver tests · CSV benchmark export</pre></div>
+ </div>
+</section>
+
+<section class="s" data-m="50" data-l="CLASS DESIGN">
+ <div class="k">CLASS DESIGN</div>
+ <h2>Layers: model · cli · algo · auth</h2>
+ <div class="g2" style="margin-top:14px">
+  <div class="col">
+   <div class="card rv" style="--dl:.2s"><b>AuthenticationService</b>Login, lockout after 5 fails, sessions</div><br>
+   <div class="card rv" style="--dl:.4s"><b>CustomHashTable + UniversalHashFunction</b>Hand-built credential store, chaining</div><br>
+   <div class="card rv" style="--dl:.6s"><b>Player · Team · Match · MatchEvent</b>Domain models for sports data</div><br>
+   <div class="card rv" style="--dl:.8s"><b>BenchmarkRunner · Ansi · TerminalMenu</b>Timing lab and terminal UI helpers</div>
+  </div>
+  <div class="t rv" style="--dl:1s"><div class="tb"><i></i><i></i><i></i><span>interfaces &amp; patterns</span></div>
+<pre><span class="vo">interface</span> UserMenuRunner
+  ├─ SearchMenu        ├─ ReportsMenu
+  ├─ SquadBuilderMenu  ├─ FacilityMenu
+  ├─ SelectionAdvisorMenu
+  └─ LiveMatchMenu
+
+<span class="vo">enum</span> Role {USER, ADMIN}
+<span class="vo">enum</span> AccountStatus {ACTIVE, LOCKED, DISABLED}
+
+<span class="cy">Three flow solvers, one FlowGraph:</span>
+FordFulkerson · EdmondsKarp · Dinic
+cross-checked for equal max flow</pre></div>
+ </div>
+</section>
+
+<section class="s" data-m="65" data-l="MENU FLOW">
+ <div class="k">CLI / MENU FLOW</div>
+ <h2>Start → Choose → Input → Process → Output</h2>
+ <div class="g2" style="margin-top:12px">
+  <div class="t"><div class="tb"><i></i><i></i><i></i><span>sportspulse — user menu (click an option)</span></div><pre id="mn" style="padding:10px"></pre></div>
+  <div class="t"><div class="tb"><i></i><i></i><i></i><span>what runs</span></div><pre id="mi" style="min-height:300px"></pre></div>
+ </div>
+</section>
+
+
+<section class="s" data-m="90" data-l="FULL-TIME">
+ <div class="mono vo" style="position:absolute;left:0;right:0;top:210px;text-align:center;font-size:96px;font-weight:700">THANK YOU</div>
+ <div class="mono" style="position:absolute;left:0;right:0;top:340px;text-align:center;font-size:30px"><span class="cy">$ </span><span id="qa" class="cur"></span></div>
+ <div class="mono d" style="position:absolute;left:0;right:0;top:420px;text-align:center;font-size:16px">Press L to run the live demo again</div>
+</section>
+
+<div id="md"><div class="t" id="mc"><div class="tb"><i></i><i></i><i></i><span>live demo — runs in your browser</span><button class="btn" style="margin-left:auto" id="mx">ESC</button></div>
+<pre><span class="cy">Typo fix (Damerau-Levenshtein)</span>  type a name: <input id="ty" value="Ronalod" autocomplete="off" aria-label="player name"><div id="rs" style="margin:8px 0"></div>
+<span class="cy">KMP vs Naive</span>  worst case, 100,000 chars  <button class="btn" id="rb">RUN</button><div id="bn" style="margin-top:6px"></div></pre></div></div>
+</div>
+<script src="config.js"></script>
+<script src="script.js"></script></body></html>
